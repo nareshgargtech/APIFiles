@@ -1,0 +1,220 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "title": "ORDS generated API for survey",
+        "version": "1.0.0"
+    },
+    "host": "soaprd.fdny.org",
+    "basePath": "/ords/hris/covid/survey",
+    "schemes": [
+        "https"
+    ],
+    "produces": [
+        "application/json"
+    ],
+    "paths": {
+        "/getCLiteMed": {
+            "get": {
+                "description": "Retrieve a record from survey",
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "The queried record.",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "diag_code": {
+                                    "$ref": "#/definitions/CHAR"
+                                },
+                                "fisa_refnum": {
+                                    "$ref": "#/definitions/CHAR"
+                                },
+                                "lmd_end": {
+                                    "$ref": "#/definitions/VARCHAR2"
+                                },
+                                "lmd_start": {
+                                    "$ref": "#/definitions/VARCHAR2"
+                                }
+                            }
+                        }
+                    }
+                },
+                "parameters": []
+            }
+        },
+        "/getDate": {
+            "get": {
+                "description": "Retrieve a record from survey",
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "The queried record.",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "sysdate": {
+                                    "$ref": "#/definitions/DATE"
+                                }
+                            }
+                        }
+                    }
+                },
+                "parameters": []
+            }
+        },
+        "/getUserInfo": {
+            "get": {
+                "description": "Retrieve a record from survey",
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "The queried record.",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "birht_date": {
+                                    "$ref": "#/definitions/VARCHAR2"
+                                },
+                                "description": {
+                                    "$ref": "#/definitions/VARCHAR2"
+                                },
+                                "fdny_app_date": {
+                                    "$ref": "#/definitions/VARCHAR2"
+                                },
+                                "fisa_refnum": {
+                                    "$ref": "#/definitions/CHAR"
+                                },
+                                "fname": {
+                                    "$ref": "#/definitions/VARCHAR2"
+                                },
+                                "lname": {
+                                    "$ref": "#/definitions/VARCHAR2"
+                                }
+                            }
+                        }
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "fisaNum",
+                        "in": "path",
+                        "type": "string",
+                        "required": true
+                    }
+                ]
+            }
+        },
+        "/getUserProfile": {
+            "get": {
+                "description": "Retrieve a record from survey",
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "The queried record.",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "birth_date": {
+                                    "$ref": "#/definitions/VARCHAR2"
+                                },
+                                "diag_code": {
+                                    "$ref": "#/definitions/CHAR"
+                                },
+                                "emp_class": {
+                                    "$ref": "#/definitions/CHAR"
+                                },
+                                "fisa_refnum": {
+                                    "$ref": "#/definitions/CHAR"
+                                },
+                                "fname": {
+                                    "$ref": "#/definitions/VARCHAR2"
+                                },
+                                "lmd_duty": {
+                                    "$ref": "#/definitions/CHAR"
+                                },
+                                "lmd_end": {
+                                    "$ref": "#/definitions/VARCHAR2"
+                                },
+                                "lmd_start": {
+                                    "$ref": "#/definitions/VARCHAR2"
+                                },
+                                "lname": {
+                                    "$ref": "#/definitions/VARCHAR2"
+                                },
+                                "unit_description": {
+                                    "$ref": "#/definitions/VARCHAR2"
+                                }
+                            }
+                        }
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "fisaRefNum",
+                        "in": "path",
+                        "type": "string",
+                        "required": true
+                    }
+                ]
+            }
+        },
+        "/postDeltaResp": {
+            "post": {
+                "description": "Create a new record on survey",
+                "responses": {
+                    "201": {
+                        "description": "The successfully created record.",
+                        "schema": {
+                            "type": "object",
+                            "properties": {}
+                        }
+                    }
+                },
+                "consumes": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "payload",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/survey_ITEM"
+                        }
+                    }
+                ]
+            }
+        }
+    },
+    "definitions": {
+        "CHAR": {
+            "type": "string"
+        },
+        "DATE": {
+            "type": "string",
+            "format": "date-time",
+            "pattern": "^\\d{4}-[01]\\d-[0123]\\dT[012]\\d:[0-5]\\d:[0-5]\\d(.\\d+)?(Z|([-+][012]\\d:[0-5]\\d))$"
+        },
+        "STRING": {
+            "type": "string"
+        },
+        "VARCHAR2": {
+            "type": "string"
+        },
+        "survey_ITEM": {
+            "properties": {
+                "body": {
+                    "type": "string"
+                }
+            }
+        }
+    }
+}
