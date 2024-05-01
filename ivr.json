@@ -3,6 +3,11 @@
     "info": {
         "title": "ORDS generated API for ivr",
         "version": "1.0.0"
+        "x-logo": {
+      "url": "https://redocly.github.io/redoc/petstore-logo.png",
+      "backgroundColor": "#FFFFFF",
+      "altText": "IVR logo"
+    }
     },
     "host": "soatst.fdny.org",
     "basePath": "/ords/hris/svy/ivr",
