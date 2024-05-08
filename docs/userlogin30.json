@@ -1,0 +1,286 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "ORDS generated API for userlogin",
+        "version": "1.0.0"
+    },
+    "servers": [
+        {
+            "url": "https://soatst.fdny.org/ords/hris/svy/userlogin/"
+        }
+    ],
+    "paths": {
+        "/getUserName": {
+            "get": {
+                "description": "Retrieve a record from userlogin",
+                "responses": {
+                    "200": {
+                        "description": "The queried record.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "name": {
+                                            "$ref": "#/components/schemas/VARCHAR2"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "AppID",
+                        "in": "path",
+                        "schema": {
+                            "type": "string"
+                        },
+                        "required": true
+                    },
+                    {
+                        "name": "User",
+                        "in": "path",
+                        "schema": {
+                            "type": "string"
+                        },
+                        "required": true
+                    }
+                ]
+            }
+        },
+        "/postnewuser": {
+            "post": {
+                "description": "Create a new record on userlogin",
+                "responses": {
+                    "201": {
+                        "description": "The successfully created record.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "user": {
+                                            "$ref": "#/components/schemas/RESULTSET"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "parameters": [],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/userlogin_ITEM"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/sampleJson": {
+            "get": {
+                "description": "Retrieve a record from userlogin",
+                "responses": {
+                    "200": {
+                        "description": "The queried record.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "user": {
+                                            "$ref": "#/components/schemas/RESULTSET"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "parameters": []
+            },
+            "post": {
+                "description": "Create a new record on userlogin",
+                "responses": {
+                    "201": {
+                        "description": "The successfully created record.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "user": {
+                                            "$ref": "#/components/schemas/RESULTSET"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "parameters": []
+            }
+        },
+        "/testproc": {
+            "post": {
+                "description": "Create a new record on userlogin",
+                "responses": {
+                    "201": {
+                        "description": "The successfully created record.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "user": {
+                                            "$ref": "#/components/schemas/RESULTSET"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "parameters": [],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/userlogin_ITEM"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/verifyuser": {
+            "get": {
+                "description": "Retrieve a record from userlogin",
+                "responses": {
+                    "200": {
+                        "description": "The queried record.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "user": {
+                                            "$ref": "#/components/schemas/RESULTSET"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "BODY",
+                        "in": "query",
+                        "schema": {
+                            "type": "string"
+                        },
+                        "description": "Implicit parameter"
+                    }
+                ]
+            },
+            "post": {
+                "description": "Create a new record on userlogin",
+                "responses": {
+                    "201": {
+                        "description": "The successfully created record.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "user": {
+                                            "$ref": "#/components/schemas/RESULTSET"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "parameters": [],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/userlogin_ITEM"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/verifyuserlogin": {
+            "post": {
+                "description": "Create a new record on userlogin",
+                "responses": {
+                    "201": {
+                        "description": "The successfully created record.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "user": {
+                                            "$ref": "#/components/schemas/RESULTSET"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "parameters": [],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/userlogin_ITEM"
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "RESULTSET": {
+                "type": "string"
+            },
+            "STRING": {
+                "type": "string"
+            },
+            "VARCHAR2": {
+                "type": "string"
+            },
+            "userlogin_ITEM": {
+                "properties": {
+                    "body": {
+                        "type": "string"
+                    }
+                }
+            },
+            "userlogin_ITEM": {
+                "properties": {
+                    "body": {
+                        "type": "string"
+                    },
+                    "o_Json": {
+                        "type": "string"
+                    }
+                }
+            }
+        }
+    }
+}
