@@ -1,99 +1,44 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <title>FDNY ORDS API Portal</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <style>
-      body {
-        margin: 0;
-        padding-top: 40px;
-      }
-
-      nav {
-        position: fixed;
-        top: 0;
-        width: 100%;
-        z-index: 100;
-      }
-      #links_container {
-          margin: 0;
-          padding: 0;
-          background-color: #0033a0;
-      }
-
-      #links_container li {
-          display: inline-block;
-          padding: 10px;
-          color: white;
-          cursor: pointer;
-      }
-    </style>
-  </head>
-  <body>
-
-    <!-- Top navigation placeholder -->
-    <nav>
-      <ul id="links_container">
-      </ul>
-    </nav>
-
-    <redoc scroll-y-offset="body > nav"></redoc>
-
-   <!-- <script src="https://rebilly.github.io/ReDoc/releases/v1.x.x/redoc.min.js"> </script>-->
-    <script src="https://cdn.redoc.ly/redoc/latest/bundles/redoc.standalone.js"> </script>
-    <script>
-     
-      // list of APIS
-      var apis = [
-         {
-          name: 'Survey',
-          url: 'docs/survey.json'
-        }
-        ,
-         {
-          name: 'Survey3.0',
-          url: 'docs/survey30.json'
-        }
-        ,
-        {
-          name: 'WCCS',
-          url: 'docs/wccs.json'
-        },
-        {
-          name: 'WCCS 3.0',
-          url: 'docs/wccs30.json'
-        },
-        {
-          name: 'IVR',
-          url: 'docs/ivr.json'
-        },
-        {
-          name: 'IVR 3.0',
-          url: 'docs/ivr30.json'
-        },
-         {
-          name: 'User Login 3.0',
-          url: 'docs/userlogin30.json'
-        }
-      ];
-
-      // initially render first API
-      Redoc.init(apis[0].url);
-
-      function onClick() {
+<!DOCTYPE html><html>  <head>    <title>ReDoc Demo: Multiple apis</title>
+<meta name='viewport' content='width=device-width, initial-scale=1'>
+<style>  body { margin: 0; padding-top: 40px;  }  nav { position: fixed; 
+  top: 0;     width: 100%; z-index: 100;  }  #links_container {
+  margin: 0;
+  padding: 0;
+  background-color: #0033a0; }  #links_container li {           display: inline-block;
+  padding: 10px;
+  color: white;
+  cursor: pointer;    }
+  </style>
+</head> <body>  <nav> <ul id='links_container'> </ul>  </nav>
+<redoc scroll-y-offset='body > nav'></redoc>
+<script src='https://rebilly.github.io/ReDoc/releases/v1.x.x/redoc.min.js'>     
+      </script>
+<script>
+var apis = [
+{
+name: 'survey',
+url: 'docs/survey.json'
+},
+{
+name: 'userlogin30',
+url: 'docs/userlogin30.json'
+},
+{
+name: 'wccs',
+url: 'docs/wccs.json'
+}
+];
+ Redoc.init(apis[0].url); 
+ function onClick() {
         var url = this.getAttribute('data-link');
-        Redoc.init(url);
-      }
-
-      // dynamically building navigation items
-      var $list = document.getElementById('links_container');
-      apis.forEach(function(api) {
-        var $listitem = document.createElement('li');
-        $listitem.setAttribute('data-link', api.url);
-        $listitem.innerText = api.name;
-        $listitem.addEventListener('click', onClick);
-        $list.appendChild($listitem);
-      });
-    </script>
-  </body>
-</html>
+        Redoc.init(url); 
+        } 
+var $list = document.getElementById('links_container');
+apis.forEach(function(api) { 
+      var $listitem = document.createElement('li'); 
+          $listitem.setAttribute('data-link', api.url); 
+          $listitem.innerText = api.name; 
+          $listitem.addEventListener('click', onClick); 
+          $list.appendChild($listitem);
+           }); 
+</script></body></html>
