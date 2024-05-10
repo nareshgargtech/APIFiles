@@ -30,7 +30,7 @@ jobs:
     # Runs a single command using the runners shell
     - name: Send greeting
       run: |
-         echo "hello" >> index1.html 
+         echo "hello" > index1.html 
          for json in `ls  ` ; do
          echo \{ >> index1.html
          echo "name : '${json}'">> index1.html
