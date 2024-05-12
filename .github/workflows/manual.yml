@@ -2,10 +2,10 @@ name:  workflowd
 on: workflow_dispatch
 jobs:
   first-job:
-    runs-on unbuntu-latest
+    runs-on: unbuntu-latest
       steps:
-        -name:firststep
-         run: echo 'hello'
-        -name:steps2
-         run: echo 'hello2'
+       -name:firststep
+        run:echo "hello1"
+       -name:steps2
+        run:echo "hello2"
          
