@@ -16,8 +16,24 @@
 <script>
 var apis = [
 {
+name: 'ivr',
+url: 'docs/ivr.json'
+},
+{
+name: 'ivr30',
+url: 'docs/ivr30.json'
+},
+{
+name: 'sample',
+url: 'docs/sample.json'
+},
+{
 name: 'survey',
 url: 'docs/survey.json'
+},
+{
+name: 'survey30',
+url: 'docs/survey30.json'
 },
 {
 name: 'userlogin30',
@@ -26,7 +42,11 @@ url: 'docs/userlogin30.json'
 {
 name: 'wccs',
 url: 'docs/wccs.json'
-}
+},
+{
+name: 'wccs30',
+url: 'docs/wccs30.json'
+},
 ];
  Redoc.init(apis[0].url); 
  function onClick() {
