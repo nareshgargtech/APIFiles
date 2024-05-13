@@ -13,11 +13,11 @@ jobs:
              stringPhrases=("Linux" "is a free" "open-source" "operating system")
              len=${#stringPhrases[@]}
              counter=0
-             
-             for i in $stringPhrases
+            
+             for i in "${stringPhrases[@]}"
                  do
                     
-                    echo "counter $counter $i";
+                  echo "counter $counter $i";
                     
                  
                   done
