@@ -14,5 +14,10 @@ jobs:
              len=${#stringPhrases[@]}
              for((i=0; i<$len; i++))
                  do
-                 echo "String: ${stringPhrases[$i]}"
+                 if [ $(i) = $len ]; then
+                    echo "String: ${stringPhrases[$i]}"
+                 else
+                   echo "You are not root"
+                 fi
+                 
              done
