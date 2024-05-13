@@ -14,11 +14,13 @@ jobs:
              len=${#stringPhrases[@]}
              counter=1 ;
             
+  
              for i in "${stringPhrases[@]}"
                  do
-                   if [$counter eq $len] then
-                  echo "counter $counter $i";
-                   fi  
+                   if [ $counter == $i ] 
+                    then 
+                     echo "a is equal to b"
+                     fi 
                 
                   counter=$((counter+1))
                  
