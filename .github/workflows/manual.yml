@@ -48,15 +48,15 @@ jobs:
           echo "<script>" >>  index.html
           files=`ls docs | cut -f1 -d. | wc -l `;
           echo "file size $files " ;
-          counter=0
           echo "var apis = [" >> index.html
           for json in `ls docs | cut -f1 -d. `;  do 
+            let counter=counter+1 
             echo "counter $counter "
             echo \{ >> index.html;
             echo "name: '${json}'," >> index.html ; 
             echo "url: 'docs/${json}.json'" >> index.html ;
             echo \}\, >> index.html; 
-            ((counter++))
+            
           done      
           echo "];" >> index.html
           echo " Redoc.init(apis[0].url); " >> index.html
