@@ -46,8 +46,8 @@ jobs:
           echo "<script src='https://rebilly.github.io/ReDoc/releases/v1.x.x/redoc.min.js'>     
                 </script>" >> index.html
           echo "<script>" >>  index.html
-          files=`ls docs | cut -f1 -d. | wc -l `;
-          echo "file size $files " ;
+          NumberOffiles=`ls docs | cut -f1 -d. | wc -l `;
+          echo "NumberOffiles  $NumberOffiles " ;
           echo "var apis = [" >> index.html
           for json in `ls docs | cut -f1 -d. `;  do 
             let counter=counter+1 
@@ -55,8 +55,11 @@ jobs:
             echo \{ >> index.html;
             echo "name: '${json}'," >> index.html ; 
             echo "url: 'docs/${json}.json'" >> index.html ;
-            echo \}\, >> index.html; 
-            
+            if [ $NumberOffiles eq $counter] then
+             echo \}\, >> index.html; 
+            else
+             echo \}\ >> index.html;
+            fi
           done      
           echo "];" >> index.html
           echo " Redoc.init(apis[0].url); " >> index.html
