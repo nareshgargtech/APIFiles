@@ -16,8 +16,10 @@ jobs:
             
              for i in "${stringPhrases[@]}"
                  do
-                    
+                   if [$counter eq $len] then
                   echo "counter $counter $i";
+                   fi  
+                
                   counter=$((counter+1))
                  
                   done
