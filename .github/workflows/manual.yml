@@ -56,9 +56,9 @@ jobs:
             echo "name: '${json}'," >> index.html ; 
             echo "url: 'docs/${json}.json'" >> index.html ;
             if [ $NumberOffiles eq $counter] then
-             echo \}\, >> index.html; 
+             echo \}\ >> index.html; 
             else
-             echo \}\ >> index.html;
+             echo \}\, >> index.html;
             fi
           done      
           echo "];" >> index.html
