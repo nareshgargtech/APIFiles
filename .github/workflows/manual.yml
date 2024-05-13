@@ -1,29 +1,86 @@
-name: First Workflow
-on: workflow_dispatch
+# This is a basic workflow to help you get started with Actions
+
+name: Build Index Page
+
+# Controls when the workflow will run
+on:
+  # Triggers the workflow on push or pull request events but only for the "dev" branch
+  #push:
+  #  branches: [ "dev" ]
+  #pull_request:
+  #  branches: [ "dev" ]
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
-  first-job:
+  # This workflow contains a single job called "build"
+  create:
+    permissions:
+      contents: write
+      
     runs-on: ubuntu-latest
+
+    # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
-      - name: Checkout
-        uses: actions/checkout@v2
-      - name: Print greeting
-        run: echo "Hello World!"
-      - name: Print goodbye
-        run: echo "Done - bye!"
-      - name: run sheel script
-        run: | 
-             stringPhrases=("Linux" "is a free" "open-source" "operating system")
-             len=${#stringPhrases[@]}
-             counter=1 ;
-            
-  
-             for i in "${stringPhrases[@]}"
-                 do
-                   if [ $counter == $i ] 
-                    then 
-                     echo "a is equal to b"
-                     fi 
-                
-                  counter=$((counter+1))
-                 
-                  done
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - uses: actions/checkout@v4
+
+      # Runs a single command using the runners shell
+      - name: Build Index Page
+        run: |
+          echo "<!DOCTYPE html><html>  <head>    <title>ReDoc Demo: Multiple apis</title>" >  index.html
+          echo "<meta name='viewport' content='width=device-width, initial-scale=1'>" >>  index.html
+          echo "<style>  body { margin: 0; padding-top: 40px;  }  nav { position: fixed; 
+            top: 0;     width: 100%; z-index: 100;  }  #links_container {
+            margin: 0;
+            padding: 0;
+            background-color: #0033a0; }  #links_container li {           display: inline-block;
+            padding: 10px;
+            color: white;
+            cursor: pointer;    }
+            </style>" >>  index.html
+          echo "</head> <body>  <nav> <ul id='links_container'> </ul>  </nav>" >> index.html
+          echo "<redoc scroll-y-offset='body > nav'></redoc>" >> index.html
+          echo "<script src='https://rebilly.github.io/ReDoc/releases/v1.x.x/redoc.min.js'>     
+                </script>" >> index.html
+          echo "<script>" >>  index.html
+          echo "var apis = [" >> index.html
+          
+          for json in `ls docs | cut -f1 -d. `;  do 
+            echo \{ >> index.html;
+            echo "name: '${json}'," >> index.html ; 
+            echo "url: 'docs/${json}.json'" >> index.html ;
+            echo \}\, >> index.html; 
+          done      
+          echo "];" >> index.html
+          echo " Redoc.init(apis[0].url); " >> index.html
+          echo " function onClick() {
+                  var url = this.getAttribute('data-link');
+                  Redoc.init(url); 
+                  } " >> index.html
+          echo "var \$list = document.getElementById('links_container');" >> index.html
+          echo "apis.forEach(function(api) { 
+                var \$listitem = document.createElement('li'); 
+                    \$listitem.setAttribute('data-link', api.url); 
+                    \$listitem.innerText = api.name; 
+                    \$listitem.addEventListener('click', onClick); 
+                    \$list.appendChild(\$listitem);
+                     }); " >> index.html
+           echo "</script></body></html>" >> index.html
+          
+      - name: Configure Git
+        run: |
+          git config user.name "GitHub Actions"
+          git config user.email "actions@github.com"
+
+      - name: Commit and push
+        run: |
+          git add -A
+          git commit -m "Automated commit"
+          git push
+        env:
+          GITHUB_TOKEN: ${{ secrets.GH_TOKEN }} 
+
+      
