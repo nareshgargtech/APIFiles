@@ -12,14 +12,12 @@ jobs:
         run: | 
              stringPhrases=("Linux" "is a free" "open-source" "operating system")
              len=${#stringPhrases[@]}
+             counter=0
              
-             for((i=1; i<$len; i++))
+             for i in $stringPhrases
                  do
-                    echo "counter [$i -eq $len )]"
-                    if [ $i -eq $len]; then
-                       echo "String: ${stringPhrases[$i+1]}"
-                    else
-                      echo "You are not root"
-                     fi
+                    
+                    echo "counter $counter $i";
+                    $counter++ ;
                  
                   done
