@@ -15,7 +15,7 @@ jobs:
              for((i=0; i<$len; i++))
                  do
                     echo "counter $i"
-                    if [ $i == $len-1 ]; then
+                    if [ $i == (($len)-1) ]; then
                        echo "String: ${stringPhrases[$i]}"
                     else
                       echo "You are not root"
