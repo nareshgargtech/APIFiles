@@ -47,9 +47,8 @@ jobs:
                 </script>" >> index.html
           echo "<script>" >>  index.html
           files=`ls docs | cut -f1 -d. `;
-          filesSize =${#files[@]}
+          echo "files $files"
           echo "var apis = [" >> index.html
-           len=${#stringPhrases[@]}
           for json in `ls docs | cut -f1 -d. `;  do 
             echo \{ >> index.html;
             echo "name: '${json}'," >> index.html ; 
