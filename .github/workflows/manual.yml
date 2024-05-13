@@ -12,12 +12,12 @@ jobs:
         run: | 
              stringPhrases=("Linux" "is a free" "open-source" "operating system")
              len=${#stringPhrases[@]}
-             counter=0
+             counter=0 ;
             
              for i in "${stringPhrases[@]}"
                  do
                     
                   echo "counter $counter $i";
-                  (( counter++ )) 
+                  (( counter++ )) ;
                  
                   done
