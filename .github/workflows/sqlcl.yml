@@ -1,0 +1,10 @@
+            - name: Setup-Oracle-SQLcl
+  # You may pin to the exact commit or the version.
+  # uses: gvenzl/setup-oracle-sqlcl@19f7b592b07a514c5e69b43cfcd9feacd47c5f5d
+  uses: gvenzl/setup-oracle-sqlcl@v1.0.0
+  with:
+    # The SQLCl version to download.
+    version: # default is latest
+    # Setup internal Java runtime.
+    setup-java-version: # optional, default is 17
+          
