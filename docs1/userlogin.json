@@ -1,30 +1,32 @@
 {
-    "openapi": "3.0.0",
+    "swagger": "2.0",
     "info": {
         "title": "ORDS generated API for userlogin",
         "version": "1.0.0"
     },
-    "servers": [
-        {
-            "url": "https://soatst.fdny.org/ords/hris/svy/userlogin/"
-        }
+    "host": "soatst.fdny.org",
+    "basePath": "/ords/hris/svy/userlogin",
+    "schemes": [
+        "https"
+    ],
+    "produces": [
+        "application/json"
     ],
     "paths": {
         "/getUserName": {
             "get": {
                 "description": "Retrieve a record from userlogin",
+                "produces": [
+                    "application/json"
+                ],
                 "responses": {
                     "200": {
                         "description": "The queried record.",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "type": "object",
-                                    "properties": {
-                                        "name": {
-                                            "$ref": "#/components/schemas/VARCHAR2"
-                                        }
-                                    }
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "name": {
+                                    "$ref": "#/definitions/VARCHAR2"
                                 }
                             }
                         }
@@ -34,17 +36,13 @@
                     {
                         "name": "AppID",
                         "in": "path",
-                        "schema": {
-                            "type": "string"
-                        },
+                        "type": "string",
                         "required": true
                     },
                     {
                         "name": "User",
                         "in": "path",
-                        "schema": {
-                            "type": "string"
-                        },
+                        "type": "string",
                         "required": true
                     }
                 ]
@@ -56,30 +54,29 @@
                 "responses": {
                     "201": {
                         "description": "The successfully created record.",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "type": "object",
-                                    "properties": {
-                                        "user": {
-                                            "$ref": "#/components/schemas/RESULTSET"
-                                        }
-                                    }
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "user": {
+                                    "$ref": "#/definitions/RESULTSET"
                                 }
                             }
                         }
                     }
                 },
-                "parameters": [],
-                "requestBody": {
-                    "content": {
-                        "application/json": {
-                            "schema": {
-                                "$ref": "#/components/schemas/userlogin_ITEM"
-                            }
+                "consumes": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "payload",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/userlogin_ITEM"
                         }
                     }
-                }
+                ]
             }
         },
         "/sampleJson": {
@@ -88,15 +85,11 @@
                 "responses": {
                     "200": {
                         "description": "The queried record.",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "type": "object",
-                                    "properties": {
-                                        "user": {
-                                            "$ref": "#/components/schemas/RESULTSET"
-                                        }
-                                    }
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "user": {
+                                    "$ref": "#/definitions/RESULTSET"
                                 }
                             }
                         }
@@ -109,20 +102,19 @@
                 "responses": {
                     "201": {
                         "description": "The successfully created record.",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "type": "object",
-                                    "properties": {
-                                        "user": {
-                                            "$ref": "#/components/schemas/RESULTSET"
-                                        }
-                                    }
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "user": {
+                                    "$ref": "#/definitions/RESULTSET"
                                 }
                             }
                         }
                     }
                 },
+                "consumes": [
+                    "application/json"
+                ],
                 "parameters": []
             }
         },
@@ -132,30 +124,29 @@
                 "responses": {
                     "201": {
                         "description": "The successfully created record.",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "type": "object",
-                                    "properties": {
-                                        "user": {
-                                            "$ref": "#/components/schemas/RESULTSET"
-                                        }
-                                    }
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "user": {
+                                    "$ref": "#/definitions/RESULTSET"
                                 }
                             }
                         }
                     }
                 },
-                "parameters": [],
-                "requestBody": {
-                    "content": {
-                        "application/json": {
-                            "schema": {
-                                "$ref": "#/components/schemas/userlogin_ITEM"
-                            }
+                "consumes": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "payload",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/userlogin_ITEM"
                         }
                     }
-                }
+                ]
             }
         },
         "/verifyuser": {
@@ -164,15 +155,11 @@
                 "responses": {
                     "200": {
                         "description": "The queried record.",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "type": "object",
-                                    "properties": {
-                                        "user": {
-                                            "$ref": "#/components/schemas/RESULTSET"
-                                        }
-                                    }
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "user": {
+                                    "$ref": "#/definitions/RESULTSET"
                                 }
                             }
                         }
@@ -182,9 +169,7 @@
                     {
                         "name": "BODY",
                         "in": "query",
-                        "schema": {
-                            "type": "string"
-                        },
+                        "type": "string",
                         "description": "Implicit parameter"
                     }
                 ]
@@ -194,30 +179,29 @@
                 "responses": {
                     "201": {
                         "description": "The successfully created record.",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "type": "object",
-                                    "properties": {
-                                        "user": {
-                                            "$ref": "#/components/schemas/RESULTSET"
-                                        }
-                                    }
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "user": {
+                                    "$ref": "#/definitions/RESULTSET"
                                 }
                             }
                         }
                     }
                 },
-                "parameters": [],
-                "requestBody": {
-                    "content": {
-                        "application/json": {
-                            "schema": {
-                                "$ref": "#/components/schemas/userlogin_ITEM"
-                            }
+                "consumes": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "payload",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/userlogin_ITEM"
                         }
                     }
-                }
+                ]
             }
         },
         "/verifyuserlogin": {
@@ -226,59 +210,56 @@
                 "responses": {
                     "201": {
                         "description": "The successfully created record.",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "type": "object",
-                                    "properties": {
-                                        "user": {
-                                            "$ref": "#/components/schemas/RESULTSET"
-                                        }
-                                    }
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "user": {
+                                    "$ref": "#/definitions/RESULTSET"
                                 }
                             }
                         }
                     }
                 },
-                "parameters": [],
-                "requestBody": {
-                    "content": {
-                        "application/json": {
-                            "schema": {
-                                "$ref": "#/components/schemas/userlogin_ITEM"
-                            }
+                "consumes": [
+                    "APPLICATION/JSON"
+                ],
+                "parameters": [
+                    {
+                        "name": "payload",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/userlogin_ITEM"
                         }
                     }
-                }
+                ]
             }
         }
     },
-    "components": {
-        "schemas": {
-            "RESULTSET": {
-                "type": "string"
-            },
-            "STRING": {
-                "type": "string"
-            },
-            "VARCHAR2": {
-                "type": "string"
-            },
-            "userlogin_ITEM": {
-                "properties": {
-                    "body": {
-                        "type": "string"
-                    }
+    "definitions": {
+        "RESULTSET": {
+            "type": "string"
+        },
+        "STRING": {
+            "type": "string"
+        },
+        "VARCHAR2": {
+            "type": "string"
+        },
+        "userlogin_ITEM": {
+            "properties": {
+                "body": {
+                    "type": "string"
                 }
-            },
-            "userlogin_ITEM": {
-                "properties": {
-                    "body": {
-                        "type": "string"
-                    },
-                    "o_Json": {
-                        "type": "string"
-                    }
+            }
+        },
+        "userlogin_ITEM": {
+            "properties": {
+                "body": {
+                    "type": "string"
+                },
+                "o_Json": {
+                    "type": "string"
                 }
             }
         }
