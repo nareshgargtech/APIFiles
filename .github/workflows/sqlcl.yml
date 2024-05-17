@@ -29,5 +29,5 @@ jobs:
       - uses: gvenzl/setup-oracle-sqlcl@v1.0.0
       - name: Run SQL Command
         run: |
-             pwd
+             echo "SELECT 'hey' ;" | SQL
    
