@@ -21,7 +21,7 @@ jobs:
       contents: write
       
     runs-on: ubuntu-latest
-
+    # ${SQLCL_HOME}/bin/sql svy/SVYEXA3@exa5-scan.fdny.org:1724/HRIS_TST.FDNY.ORG
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
@@ -29,5 +29,5 @@ jobs:
       - uses: gvenzl/setup-oracle-sqlcl@v1.0.0
       - name: Run SQL Command
         run: |
-            ${SQLCL_HOME}/bin/sql svy/SVYEXA3@exa5-scan.fdny.org:1724/HRIS_TST.FDNY.ORG
+            echo pwd
    
