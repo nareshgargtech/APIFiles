@@ -23,7 +23,7 @@ jobs:
     runs-on: ubuntu-latest
     services:
       oracle:
-        image: gvenzl/oracle-free!-xe:latest
+        image: gvenzl/oracle-free:latest
         env:
             ORACLE_RANDOM_PASSWORD: y
             APP_USER: test
