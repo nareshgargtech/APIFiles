@@ -23,11 +23,11 @@ jobs:
     runs-on: ubuntu-latest
     services:
       oracle:
-        image: gvenzl/oracle-xe:latest
+        image: gvenzl/oracle-free!-xe:latest
         env:
-            ORACLE_RANDOM_PASSWORD: true
-            APP_USER: admin
-            APP_USER_PASSWORD: admin1
+            ORACLE_RANDOM_PASSWORD: y
+            APP_USER: test
+            APP_USER_PASSWORD: test
         ports:
           - 1521:1521
         options: --name oracle
