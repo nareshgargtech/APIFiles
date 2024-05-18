@@ -24,13 +24,12 @@ jobs:
     services:
       oracle:
         image: gvenzl/oracle-free:latest
-        env:
-            ORACLE_RANDOM_PASSWORD: y
-            APP_USER: test
-            APP_USER_PASSWORD: test
+        with:
+            app-user: test
+            app-user-password: test
         ports:
           - 1521:1521
-        options: --name oracle
+        
     # ${SQLCL_HOME}/bin/sql svy/SVYEXA3@exa5-scan.fdny.org:1724/HRIS_TST.FDNY.ORG
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
