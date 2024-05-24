@@ -36,6 +36,15 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v4
       - uses: gvenzl/setup-oracle-sqlcl@v1.0.0
+      - name: get properties
+        id: json_properties
+        uses: ActionsTools/read-json-action@main
+        with:
+         file_path: "package.json"
+
+      - run: |
+              echo ${{steps.json_properties.outputs.name}}
+              echo ${{steps.json_properties.outputs.version}}
       - name: Run SQL Command
         run: |
             echo "SELECT * FROM DUAL;" | sql
