@@ -40,11 +40,11 @@ jobs:
         id: json_properties
         uses: ActionsTools/read-json-action@main
         with:
-         file_path: "package.json"
+         file_path: "db.properties"
 
       - run: |
-              echo ${{steps.json_properties.outputs.name}}
-              echo ${{steps.json_properties.outputs.version}}
+              echo ${{steps.json_properties.APEX_PRD_PATH}}
+             
       - name: Run SQL Command
         run: |
             echo "SELECT * FROM DUAL;" | sql
